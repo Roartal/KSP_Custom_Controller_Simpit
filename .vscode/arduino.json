@@ -1,0 +1,6 @@
+{
+    "board": "arduino:avr:leonardo",
+    "programmer": "arduino:avrispmkii",
+    "port": "COM4",
+    "sketch": "kspCC_master.ino"
+}
