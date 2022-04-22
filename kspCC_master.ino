@@ -22,19 +22,16 @@ OneButton TW_SUB_btn(TW_SUB_PIN, true, true);
 KerbalSimpit mySimpit(Serial);
 
 void twStopClicked() {
-  digitalWrite(LED_BUILTIN, HIGH);
   tw_msg.command = Timewarp::TIMEWARP_X1;
   mySimpit.send(TIMEWARP_MESSAGE, tw_msg);
 }
 
 void twAddClicked() {
-  digitalWrite(LED_BUILTIN, HIGH);
   tw_msg.command = Timewarp::TIMEWARP_UP;
   mySimpit.send(TIMEWARP_MESSAGE, tw_msg);
 }
 
 void twSubClicked() {
-  digitalWrite(LED_BUILTIN, HIGH);
   tw_msg.command = Timewarp::TIMEWARP_DOWN;
   mySimpit.send(TIMEWARP_MESSAGE, tw_msg);
 }
@@ -53,6 +50,9 @@ void setup() {
   // This loop continually attempts to handshake with the plugin.
   // It will keep retrying until it gets a successful handshake.
   while (!mySimpit.init()) {
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(100);
+    digitalWrite(LED_BUILTIN, HIGH);
     delay(100);
   }
   // Turn off the built-in LED to indicate handshaking is complete.
